@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>小红书封面生成</title>
+    <link rel="stylesheet" href="/styles.css?v=20260813-review-mode" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <div class="panel input-panel">
+          <div class="brand-row">
+            <div>
+              <p class="eyebrow">XHS Cover MVP</p>
+              <h1>小红书批量封面生成</h1>
+            </div>
+            <div class="brand-actions">
+              <span class="status-pill">爆款封面模版</span>
+              <button id="restoreConfigBtn" type="button" class="ghost restore-config-btn" disabled>恢复上次配置</button>
+            </div>
+          </div>
+
+          <div class="step-label">选模版</div>
+
+          <div class="field">
+            <label for="visualMode">模版选择</label>
+            <select id="visualMode"></select>
+          </div>
+
+          <div class="style-template-box">
+            <div class="prompt-header">
+              <strong>爆款模版库</strong>
+              <span id="styleTemplateSummary">选择模版后预览</span>
+            </div>
+            <div class="style-template-controls">
+              <input id="styleTemplateInput" type="file" accept="image/png,image/jpeg,image/webp" multiple />
+              <input id="styleTemplateName" placeholder="模版名（可选）" />
+              <button id="pickStyleTemplateBtn" type="button" class="ghost">选参考封面</button>
+              <button id="analyzeStyleTemplateBtn" type="button" class="secondary">分析并保存</button>
+            </div>
+            <input id="styleTemplateNotes" class="style-template-note" placeholder="可选：写下这组封面适合什么品类、想保留什么感觉。" />
+            <div id="styleTemplatePreview" class="style-template-preview">上传 1-8 张爆款参考封面后，会总结成可复用画面模版。</div>
+          </div>
+
+          <div class="step-label">上传素材</div>
+
+          <div id="uploadZone" class="drop-zone upload-zone" role="button" tabindex="0">
+            <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" multiple />
+            <input id="folderInput" type="file" accept="image/png,image/jpeg,image/webp" multiple webkitdirectory />
+            <span class="drop-title">上传原图</span>
+            <span class="drop-copy">可多选图片，也可整批导入文件夹</span>
+            <div class="upload-actions">
+              <button id="pickImagesBtn" type="button" class="secondary">选图片</button>
+              <button id="pickFolderBtn" type="button" class="ghost">选文件夹</button>
+            </div>
+            <div id="sourceOrderList" class="source-order-list"></div>
+          </div>
+          <div id="imageInputSummary" class="upload-summary">还没有选择原图。</div>
+
+          <div class="step-label">填需求</div>
+
+          <div class="field">
+            <label for="noteTitle">原始标题</label>
+            <input id="noteTitle" value="" />
+          </div>
+
+          <div class="field">
+            <div class="field-label-row">
+              <label for="noteBody">原始正文</label>
+              <input id="extractImageCopyInput" type="file" accept="image/png,image/jpeg,image/webp" multiple />
+              <button id="extractImageCopyBtn" type="button" class="ghost inline-tool">从图片提取正文</button>
+            </div>
+            <textarea id="noteBody" rows="4" placeholder="可以手动输入正文，也可以直接把截图/参数图粘贴到这里自动提取。"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="topicDirection">选题方向 / 画面目标</label>
+            <textarea id="topicDirection" rows="2" placeholder="例如：球迷周末在客厅看球的氛围，但我只有客厅素材，希望生成有看球感的封面。"></textarea>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="batchCount">生成数量</label>
+              <input id="batchCount" type="number" min="1" max="60" value="50" />
+            </div>
+            <div class="field">
+              <label for="size">画面比例</label>
+              <select id="size">
+                <option value="1024x1536" data-ratio="3:4 小红书竖图">3:4 小红书竖图</option>
+                <option value="1024x1536" data-ratio="4:5 竖图">4:5 竖图</option>
+                <option value="1024x1536" data-ratio="9:16 竖屏">9:16 竖屏</option>
+                <option value="1024x1024" data-ratio="1:1 方图">1:1 方图</option>
+                <option value="1536x1024" data-ratio="16:9 横图">16:9 横图</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="concurrency">批量并发数</label>
+              <select id="concurrency">
+                <option value="3">3 稳妥</option>
+                <option value="5" selected>5 推荐</option>
+                <option value="10">10 更快</option>
+                <option value="20">20 激进</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="promptBtn" class="secondary">生成内容队列</button>
+            <button id="generateBtn">试做第 1 张</button>
+            <button id="batchGenerateBtn">继续生成剩余</button>
+          </div>
+
+          <p class="note">
+            先生成内容队列，再试做第 1 张；满意后用并发批量生成剩余封面。
+          </p>
+        </div>
+
+        <div class="panel preview-panel">
+          <div class="preview-toolbar">
+            <div>
+              <p class="eyebrow">Preview</p>
+              <h2>当前封面</h2>
+            </div>
+            <div class="download-actions">
+              <button id="downloadAllBtn" class="secondary" hidden>下载全部</button>
+              <button id="downloadHistoryBtn" class="ghost">下载历史图片</button>
+              <a id="downloadLink" class="download-link" href="#" download hidden>下载图片</a>
+            </div>
+          </div>
+
+          <div class="preview-stage">
+            <img id="previewImage" alt="封面预览" />
+            <div id="emptyPreview" class="empty-preview">上传图片后在这里预览</div>
+            <div id="loadingOverlay" class="loading-overlay" hidden>
+              <div class="spinner"></div>
+              <strong id="loadingTitle">生成中</strong>
+              <span id="loadingText">正在提交任务，请稍等。</span>
+              <button id="stopGenerationBtn" type="button" class="danger stop-generation-btn" hidden>停止生成</button>
+            </div>
+          </div>
+
+          <div id="message" class="message"></div>
+          <div class="usage-box">
+            <div class="prompt-header">
+              <strong>最近消耗</strong>
+              <button id="refreshUsageBtn" class="ghost">刷新</button>
+            </div>
+            <div id="usageLog" class="usage-log">还没有生成记录。</div>
+          </div>
+
+          <div class="revision-box">
+            <div class="prompt-header">
+              <strong>批注修改当前图</strong>
+              <span>可单图修改，也可应用到后续</span>
+            </div>
+            <textarea id="revisionFeedback" rows="3" placeholder="例如：字再大一点，整体往左移一点，不要挡住餐边柜。"></textarea>
+            <div class="actions compact-actions">
+              <button id="revisionPromptBtn" class="secondary">生成批注提示词</button>
+              <button id="regenerateCurrentBtn">按批注重产这张</button>
+              <button id="applyFutureBtn" class="secondary">应用到后续生产</button>
+              <button id="clearFutureRulesBtn" class="ghost">清空后续规则</button>
+            </div>
+            <div class="future-rules">
+              <strong>后续生产规则</strong>
+              <pre id="futureRules">暂无。点击“应用到后续生产”后，后面的单张/批量都会带上这条规则。</pre>
+            </div>
+          </div>
+
+          <div class="batch-box">
+            <div class="prompt-header">
+              <strong>任务队列</strong>
+              <span id="queueSummary">还没有生成</span>
+            </div>
+            <div id="batchList" class="batch-list"></div>
+          </div>
+
+          <details class="debug-box">
+            <summary>手动测试用提示词</summary>
+            <div class="prompt-box">
+              <div class="prompt-header">
+                <strong>当前封面提示词</strong>
+                <button id="copyPromptBtn" class="ghost">复制</button>
+              </div>
+              <textarea id="promptOutput" rows="10" readonly></textarea>
+            </div>
+            <button id="copyBatchPromptBtn" class="ghost">复制内容队列提示词</button>
+          </details>
+
+        </div>
+      </section>
+    </main>
+
+    <script src="/config-state.js?v=20260813-review-mode"></script>
+    <script src="/upload-utils.js?v=20260813-review-mode"></script>
+    <script src="/app.js?v=20260813-review-mode"></script>
+  </body>
+</html>

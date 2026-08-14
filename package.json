@@ -1,0 +1,23 @@
+{
+  "name": "xiaohongshu-cover-workflow",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.9 <23"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "server:start": "bash scripts/start-server.sh",
+    "server:stop": "bash scripts/stop-server.sh",
+    "server:status": "bash scripts/status-server.sh"
+  },
+  "dependencies": {
+    "archiver": "^8.0.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "multer": "^2.2.0",
+    "openai": "^6.10.0",
+    "sharp": "^0.35.2"
+  }
+}

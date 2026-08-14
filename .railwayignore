@@ -1,0 +1,11 @@
+.git
+.env
+.DS_Store
+node_modules
+uploads
+outputs
+logs
+test
+assets/fonts/Hanzipen.ttc
+assets/fonts/HiraginoSansGB.ttc
+assets/fonts/Yuanti.ttc
