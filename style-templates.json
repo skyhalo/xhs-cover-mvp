@@ -59,7 +59,7 @@
     ],
     "imagePromptBlock": "生成一张小红书竖版封面，采用暖橙/金黄色扁平插画节日海报风。顶部放超大圆润粗体中文主标题，居中占宽 70%-90%；画面中心是与主题匹配的微笑人物，正面、亲切、动作简单，手持或展示用户提供的产品/主体，产品包装或核心外观必须清晰可辨。左右用主题相关道具和绿色植物形成框景，加入少量星星高光、柔和手绘纹理和同色系波浪背景。底部放浅橙圆角横条，承载一句短标语。整体明亮、治愈、节日感强，保持小红书封面可读性，不复刻参考图的具体品牌、人物或图案。",
     "sourceCount": 1,
-    "previewImage": "/template-previews/orange-worker-illustration.png",
+    "previewImage": "/template-previews/orange-worker-illustration.webp",
     "createdAt": "2026-07-30T00:00:00.000Z",
     "updatedAt": "2026-07-30T00:00:00.000Z"
   },
@@ -122,7 +122,7 @@
     ],
     "imagePromptBlock": "生成一张小红书竖版封面，使用深绿色黑板背景和白色粉笔手写风。用户提供的产品作为中心偏下主角，占画面高度约一半，包装正面清晰可辨。在产品周围写满巨大粉笔中文短句，文字大小不一、略微倾斜、有粉笔颗粒和擦痕，形成童趣包围感。给产品添加少量手绘拟人元素，例如眉毛、笑脸、手臂、披风或围巾，但不能遮挡品牌和核心卖点。整体可爱、成长、亲子、轻松，像小红书童趣产品封面，不复刻参考图具体品牌和文案。",
     "sourceCount": 1,
-    "previewImage": "/template-previews/green-chalkboard-product.png",
+    "previewImage": "/template-previews/green-chalkboard-product.webp",
     "createdAt": "2026-07-30T00:00:00.000Z",
     "updatedAt": "2026-07-30T00:00:00.000Z"
   },

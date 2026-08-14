@@ -551,7 +551,7 @@ function renderStyleTemplatePreview() {
     styleTemplatePreview.innerHTML = `
       <div class="template-preview-card">
         <div class="template-preview-media">
-          <img src="/template-previews/poster-card.png" alt="大字报卡片参考封面" />
+          <img src="/template-previews/poster-card.webp" alt="大字报卡片参考封面" />
         </div>
         <div class="template-preview-copy">
           <strong>本地卡片模版</strong>
