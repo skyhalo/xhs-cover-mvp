@@ -350,10 +350,11 @@ test('bundled comparison templates are merged when old user data exists', async 
   });
 
   const styles = readComparisonStyles();
-  assert.equal(styles.length, 16);
+  assert.equal(styles.length, 17);
   assert.equal(styles.filter((style) => style.id === 'digital-rtx-vertical-review').length, 1);
   assert.ok(styles.some((style) => style.name === '竖排点评横评'));
   assert.ok(styles.some((style) => style.name === '参数对比 | 深色大标题密表'));
+  assert.ok(styles.some((style) => style.name === '参数对比 | 理工生选机攻略'));
 });
 
 test('topic direction creates a red bold emphasis plan for the requested product', async () => {

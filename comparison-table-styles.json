@@ -414,5 +414,31 @@
     "copyStructure": "适合产品数量 3-4 个、字段较多的完整对比；优先展示图片、处理器、屏幕、防水、电池、影像、价格等。",
     "createdAt": "2026-08-12T07:57:12.791Z",
     "updatedAt": "2026-08-14T05:46:34.941Z"
+  },
+  {
+    "id": "engineering-major-laptop-guide",
+    "name": "参数对比 | 理工生选机攻略",
+    "category": "comparison",
+    "layout": "major-rows",
+    "previewImage": "/template-previews/comparison-engineering-major-guide.webp",
+    "titleColor": "#17238f",
+    "titleMainColor": "#17238f",
+    "titleAccentColor": "#5b35d5",
+    "sectionTitleColor": "#17238f",
+    "headerBg": "#5b35d5",
+    "audienceBg": "#f3efff",
+    "cellBg": "#ffffff",
+    "rowAlt": "#f4f0ff",
+    "gridColor": "#6d4ce8",
+    "textColor": "#111111",
+    "titleSize": 68,
+    "gridWidth": 1.5,
+    "mood": "紫蓝科技感、校园选购指南、信息密集但分区清晰，兼顾专业可信度和小红书封面冲击力。",
+    "bestFor": "按专业、学习方向、使用场景或人群拆分需求，并为每组推荐一款电脑、平板、手机或其他数码产品。",
+    "composition": "顶部为超大攻略标题和一行简短副标题；正文固定为三段纵向白色圆角面板。每段左侧写方向名称、典型专业、常用场景和推荐类型，中部放对应产品名及产品图，右侧用紫色性能标签、白底描边参数胶囊和黄色价格爆炸贴呈现关键规格与价格。三段结构、列宽和视觉节奏保持统一。",
+    "visualRules": "使用浅紫或淡蓝科技背景，白色圆角面板配紫蓝描边和轻阴影。主标题使用深蓝紫粗体，栏目标题和关键词用亮蓝紫强调；参数胶囊保持高对比和整齐对齐；价格使用黄色爆炸贴配红色数字。可加入书本、学位帽、图表、AI等简洁线性图标，但不得遮挡文字和产品图。产品图必须来自用户上传素材并保持外观准确。",
+    "copyStructure": "标题概括目标人群和选购任务，副标题提炼选择逻辑。每个方向模块依次包含：方向名称；典型专业；常用场景；推荐类型；产品名称；2至3个核心性能标签；3至5条真实规格；真实价格或活动价。只使用正文和产品资料中已出现的信息，缺失字段留空或弱化，不编造参数、优惠和结论。",
+    "createdAt": "2026-08-22T00:00:00.000Z",
+    "updatedAt": "2026-08-22T00:00:00.000Z"
   }
 ]
